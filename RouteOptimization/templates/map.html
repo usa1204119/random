@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Map
+{% endblock %}
+
+{% block content %}
+<style>
+    /* Custom map container styles */
+    #map-container {
+        border: 2px solid #0c0d0e; /* Border color */
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+        overflow: hidden; /* Hide overflowing content */
+    }
+</style>
+
+<div class="container-fluid mt-4">
+    <div class="row flex-grow-1">
+        <div class="col-lg-12 d-flex">
+            <!-- Responsive map container -->
+            <div id="map-container" class="w-100">
+                {{ map | safe }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

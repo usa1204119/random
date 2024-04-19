@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    RouteX - Plan Your Route
+{% endblock %}
+
+{% block content %}
+<style>
+    /* Custom styles for jumbotron */
+    .jumbotron {
+        padding: 4rem 2rem;
+        margin-bottom: 2rem;
+        background-color: #2b333c;
+        border-radius: 1rem;
+        color: #fff;
+        position: relative;
+    }
+
+    .boat-icon {
+        position: absolute;
+        top: -3rem;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 3rem;
+    }
+</style>
+
+<div class="container">
+    <div class="jumbotron text-center">
+        <i class="fas fa-ship boat-icon"></i>
+        <h2 class="mb-4">Find the most Optimal Route through RouteX</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-container">
+                <form action="{% url 'calculate_route' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="origin_country" class="form-label">Origin Country:</label>
+                        <input type="text" class="form-control" id="origin_country" name="origin_country" required placeholder="Ex:India">
+                    </div>
+                    <div class="mb-3">
+                        <label for="origin_port" class="form-label">Origin Port:</label>
+                        <input type="text" class="form-control" id="origin_port" name="origin_port" required placeholder="Ex:Cochin">
+                    </div>
+                    <div class="mb-3">
+                        <label for="dest_country" class="form-label">Destination Country:</label>
+                        <input type="text" class="form-control" id="dest_country" name="dest_country" required placeholder="Ex:China">
+                    </div>
+                    <div class="mb-3">
+                        <label for="dest_port" class="form-label">Destination Port:</label>
+                        <input type="text" class="form-control" id="dest_port" name="dest_port" required placeholder="Ex:Shanghai">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Plan Route</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="image-container">
+                <img src="https://media.licdn.com/dms/image/D4D12AQHEju-pkpOd3w/article-cover_image-shrink_720_1280/0/1694753500234?e=2147483647&v=beta&t=Qbb5X_pWVsFbNKSguZxbmosQAZw5ngwFxfocQ7YhE48" class="img-fluid rounded" alt="Route Image" style="width: 100%; height: auto;">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
